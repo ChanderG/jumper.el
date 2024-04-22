@@ -10,7 +10,7 @@
     (format "Buffers: \n %s\n%s" menu footer)))
 
 (defun jumper-add (buf)
-  (let ((ch (downcase (string-to-char (buffer-name buf)))))
+  (let ((ch (downcase (string-to-char (string-trim-left (buffer-name buf) "*")))))
     ;; TODO: use a different char if existing char is already mapped
     ;; TODO: deal with duplicates
     (push (list ch buf) jumper-buffers)
