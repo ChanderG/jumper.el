@@ -20,7 +20,8 @@ I realized after creating Jumper that Emacs does have a solution for this proble
 
 Bind the Jumper trigger into a easy to use key. I use `j` since I use evil-mode and still use the arrow-keys all the time.
 
-1. Fast creation of jump locations. `j .` adds the current buffer into the jumper listing using the first character of the buffer name, casted to lowercase.
+1. Fast creation of jump locations. `j .` adds the current buffer into the jumper listing using the first character of the buffer name, casted to lowercase. 
+2. Another option is to use `j + x` where the current buffer will be added using the shortcut x. The idea is to use memorable characters. You should use `j .` all the time (assuming no first char collisions) and use `+` only to manage the rare conflict.
 2. Quick switch. `j x` will take you to the buffer marked using `x`.
 3. Quick removal. `j - x` will remove the jump location x from the listing.
 4. Quick clear out. `j J` will clear out all entries. 

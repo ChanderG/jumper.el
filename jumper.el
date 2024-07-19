@@ -6,11 +6,12 @@
   (let ((menu (mapcar
                    (lambda (x) (format "%c %s" (car x) (cadr x)))
                    jumper-buffers))
-        (footer "[.] Add current; [J] Clear all; [-x] to remove buffer x"))
+        (footer "[./+] Add current/custom shortcut; [J] Clear all; [-x] to remove buffer x"))
     (format "Buffers: \n %s\n%s" menu footer)))
 
-(defun jumper-add (buf)
-  (let ((ch (downcase (string-to-char (string-trim-left (buffer-name buf) "*")))))
+(defun jumper-add (buf &optional shortcut)
+  (let* ((guess (downcase (string-to-char (string-trim-left (buffer-name buf) "*"))))
+         (ch (if shortcut shortcut guess)))
     ;; TODO: use a different char if existing char is already mapped
     ;; TODO: deal with duplicates
     (push (list ch buf) jumper-buffers)
@@ -30,6 +31,7 @@
          (inp (read-char msg)))
     (cond ((eq inp ?J) (setq jumper-buffers nil))
           ((eq inp ?.) (jumper-add (current-buffer)))
+          ((eq inp ?+) (jumper-add (current-buffer) (read-char "Jumper shortcut: ")))
           ((eq inp ?-) (jumper-remove (read-char "Jumper to remove: ")))
           ((eq inp ?\e) nil)
           (t (jumper-jump inp)))))
