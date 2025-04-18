@@ -2,6 +2,8 @@
 
 Fast single-character buffer switch ala registers.
 
+![Demo](./imgs/demo.gif)
+
 ## Motivation
 
 In Emacs, we usually have 100s of buffers. This model doesn't lend itself to the "tab-bar" approach which other editors (and softwares like Browsers etc) have. Instead we use (fuzzy) search from a list of items such as `switch-to-buffer` or `helm-mini` (and the like). This model works very well for general use, getting to any arbitrary buffer in a few characters of search.
@@ -36,6 +38,8 @@ Setup keys to trigger jumper as needed:
 ## Usage/Features
 
 Bind the Jumper trigger into a easy to use key. I use `j` since I use evil-mode and still use the arrow-keys all the time.
+
+![View](./imgs/view.png)
 
 1. Fast creation of jump locations. `j .` adds the current buffer into the jumper listing using the first character of the buffer name, casted to lowercase. 
 2. Another option is to use `j + x` where the current buffer will be added using the shortcut x. The idea is to use memorable characters. You should use `j .` all the time (assuming no first char collisions) and use `+` only to manage the rare conflict.
