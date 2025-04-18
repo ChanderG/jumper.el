@@ -16,7 +16,24 @@ This number of buffers is an awkward position: too many for the simple alternati
 
 I realized after creating Jumper that Emacs does have a solution for this problem out of the box: Registers. You can build a workflow like Jumper quite easily with Registers. But, since I already have this built, I will continue on this approach.
 
-## Usuage/Features
+## Install
+
+Git clone or obtain this folder via quelpa:
+```
+cd ~/Customization
+git clone https://github.com/ChanderG/jumper.el
+```
+
+Setup keys to trigger jumper as needed:
+``` el
+(use-package jumper.el
+  :load-path "~/Customization/jumper.el/"
+  :bind (("C-c j" . jumper-trigger)
+         :map evil-normal-state-map
+         ("j" . jumper-trigger)))
+```
+
+## Usage/Features
 
 Bind the Jumper trigger into a easy to use key. I use `j` since I use evil-mode and still use the arrow-keys all the time.
 
@@ -27,5 +44,5 @@ Bind the Jumper trigger into a easy to use key. I use `j` since I use evil-mode 
 4. Quick clear out. `j J` will clear out all entries. 
 5. Lack of persistance is a feature. Jumper listing is meant to be a cache - easily discarded and built up as required.
 
-The usuage assumption of Jumper is that this listing will change completely as you work on different tasks.
+The usage assumption of Jumper is that this listing will change completely as you work on different tasks.
 

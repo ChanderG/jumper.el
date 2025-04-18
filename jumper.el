@@ -1,3 +1,5 @@
+;;; jumper.el --- Jump between buffers
+
 (defvar jumper-buffers nil)
 
 (defun jumper-msg ()
@@ -35,5 +37,3 @@
           ((eq inp ?-) (jumper-remove (read-char "Jumper to remove: ")))
           ((eq inp ?\e) nil)
           (t (jumper-jump inp)))))
-
-(define-key evil-normal-state-map "j" 'jumper-trigger)
